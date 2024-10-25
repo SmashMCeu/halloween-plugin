@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>example-plugin</artifactId>
+	<name>Example</name>
+	<description>An example plugin for SmashMc.</description>
+	<version>1.0.0</version>
+
+	<parent>
+		<groupId>eu.smashmc</groupId>
+		<artifactId>plugin-parent</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+
+	<properties>
+		<bukkit.main>eu.smashmc.example.ExamplePlugin</bukkit.main>
+	</properties>
+
+	<repositories>
+		<repository>
+			<id>smashmc-public</id>
+			<url>https://repo.smashmc.eu/public</url>
+		</repository>
+		<!-- Uncomment to use private repo (Required for smash-lib)  -->
+		<!--
+		<repository>
+			<id>smashmc-private</id>
+			<url>https://repo.smashmc.eu/smashmc</url>
+		</repository>
+		-->
+	</repositories>
+
+	<dependencies>
+		<!-- Uncomment to use smash-lib in project  -->
+		<!--
+		<dependency>
+			<groupId>eu.smashmc</groupId>
+			<artifactId>smash-lib</artifactId>
+			<version>${smash-lib.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		-->
+	</dependencies>
+</project>

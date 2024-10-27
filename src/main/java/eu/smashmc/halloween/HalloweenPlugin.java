@@ -70,5 +70,6 @@ public class HalloweenPlugin extends JavaPlugin implements Listener {
 			for (int z = -10; z < 10; z++)
 				player.getWorld().refreshChunk(chunk.getX() + x, chunk.getZ() + z);
 		}
+		player.getInventory().setHeldItemSlot(player.getInventory().getHeldItemSlot());
 	}
 }

@@ -63,7 +63,7 @@ public class HalloweenPlugin extends JavaPlugin implements Listener {
 
 	public void setDimension(Player player, int dimension) {
 		CraftPlayer cp = (CraftPlayer) player;
-		PacketPlayOutRespawn packet = new PacketPlayOutRespawn(dimension, EnumDifficulty.EASY, WorldType.CUSTOMIZED, WorldSettings.EnumGamemode.ADVENTURE);
+		PacketPlayOutRespawn packet = new PacketPlayOutRespawn(dimension, EnumDifficulty.EASY, WorldType.CUSTOMIZED, WorldSettings.EnumGamemode.SURVIVAL);
 		(cp.getHandle()).playerConnection.sendPacket(packet);
 		Chunk chunk = player.getLocation().getChunk();
 		for (int x = -10; x < 10; x++) {

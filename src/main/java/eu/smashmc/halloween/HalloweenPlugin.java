@@ -1,18 +1,13 @@
 package eu.smashmc.halloween;
 
 import eu.smashmc.api.core.packet.PacketUtil;
+import eu.smashmc.lib.bukkit.NmsUtil;
 import eu.smashmc.lib.bukkit.world.location.Locations;
-import net.minecraft.server.v1_8_R3.EnumDifficulty;
 import net.minecraft.server.v1_8_R3.PacketPlayOutRespawn;
-import net.minecraft.server.v1_8_R3.WorldSettings;
-import net.minecraft.server.v1_8_R3.WorldType;
 import org.apache.commons.lang.reflect.FieldUtils;
 import org.bukkit.Bukkit;
-import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.block.Biome;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -58,18 +53,7 @@ public class HalloweenPlugin extends JavaPlugin implements Listener {
 		if (!player.getWorld().equals(Locations.spawn().getWorld())) {
 			return;
 		}
-		setDimension(player, DIMENSION);
-	}
-
-	public void setDimension(Player player, int dimension) {
-		CraftPlayer cp = (CraftPlayer) player;
-		PacketPlayOutRespawn packet = new PacketPlayOutRespawn(dimension, EnumDifficulty.EASY, WorldType.CUSTOMIZED, WorldSettings.EnumGamemode.SURVIVAL);
-		(cp.getHandle()).playerConnection.sendPacket(packet);
-		Chunk chunk = player.getLocation().getChunk();
-		for (int x = -10; x < 10; x++) {
-			for (int z = -10; z < 10; z++)
-				player.getWorld().refreshChunk(chunk.getX() + x, chunk.getZ() + z);
-		}
-		player.getInventory().setHeldItemSlot(player.getInventory().getHeldItemSlot());
+		// respawn player to apply the dimension
+		NmsUtil.respawnPlayerClientSide(player);
 	}
 }
